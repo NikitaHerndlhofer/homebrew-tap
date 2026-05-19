@@ -7,11 +7,11 @@ class SuperwhisperRag < Formula
   on_macos do
     on_arm do
       url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.1.0/swrag-darwin-arm64.tar.gz"
-      sha256 "21875e6e6119c495e6bc95c706d6ce455be8aa8d2180e72966167225d467ee8c"
+      sha256 "02f89287f40306a8a9085b16c48d0a8d9ba15d2b834d5f45ae90c505c4fbf0ef"
     end
     on_intel do
       url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.1.0/swrag-darwin-x64.tar.gz"
-      sha256 "089468fea9ea858d3cf22849832fb296836544a84e7513ac62680be75c153e40"
+      sha256 "1206c8f06e3729fe95fa4c377fc19efe6663395dc3f8785d0ba51cbadf312aa9"
     end
   end
 
