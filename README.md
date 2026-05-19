@@ -4,9 +4,9 @@ Homebrew tap for my tools.
 
 ## Available formulae
 
-| Formula | What it is | Source |
-| --- | --- | --- |
-| `superwhisper-rag` | Local SQL archive for your Super Whisper dictation history. Thin sqlite3 wrapper + multilingual semantic search via bge-m3 / Ollama. | <https://github.com/NikitaHerndlhofer/super-whisper-rag> |
+| Formula            | What it is                                                                                                                           | Source                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| `superwhisper-rag` | Local SQL archive for your Super Whisper dictation history. Thin sqlite3 wrapper + multilingual semantic search via bge-m3 / Ollama. | <https://github.com/NikitaHerndlhofer/superwhisper-rag> |
 
 ## Install
 
