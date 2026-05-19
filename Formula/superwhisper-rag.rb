@@ -1,17 +1,17 @@
 class SuperwhisperRag < Formula
   desc "Local SQL archive for your Super Whisper dictation history"
   homepage "https://github.com/NikitaHerndlhofer/superwhisper-rag"
-  version "0.2.0"
+  version "0.4.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.2.0/swrag-darwin-arm64.tar.gz"
-      sha256 "fcafde9b63a6e54d5ae8d8935808a45b8b2e5854ac62574c0958c3e8577ba275"
+      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.4.0/swrag-darwin-arm64.tar.gz"
+      sha256 "9ab4e68eaa8450df78571a43e0b2a7c9fff4a206d81f9b0a0ab7dbddc4997051"
     end
     on_intel do
-      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.2.0/swrag-darwin-x64.tar.gz"
-      sha256 "35fd144cffc80544dbecaae41c45c5660856ce3b2afcdf1d10d8194ad668759e"
+      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.4.0/swrag-darwin-x64.tar.gz"
+      sha256 "96cf3bc3d32fdb19daff4f7cea2cfa711a47e8029a1adbf3a9933136eca3c6be"
     end
   end
 
@@ -40,6 +40,6 @@ class SuperwhisperRag < Formula
   end
 
   test do
-    assert_match(/0\.1\.0/, shell_output("#{bin}/swrag --version"))
+    assert_match(version.to_s, shell_output("#{bin}/swrag --version"))
   end
 end
