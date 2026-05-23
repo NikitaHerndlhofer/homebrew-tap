@@ -1,17 +1,17 @@
 class SuperwhisperRag < Formula
   desc "Local SQL archive for your Super Whisper dictation history"
   homepage "https://github.com/NikitaHerndlhofer/superwhisper-rag"
-  version "0.6.3"
+  version "0.7.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.6.3/swrag-darwin-arm64.tar.gz"
-      sha256 "543ea0fe8f0614472dcc16f1b045e7740bf3539be0ecb624b4af83f9f17e1fd6"
+      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.7.0/swrag-darwin-arm64.tar.gz"
+      sha256 "e5d21827b1b688f3cc012177e50f1a9371617e13056cdced966be8e5353831a7"
     end
     on_intel do
-      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.6.3/swrag-darwin-x64.tar.gz"
-      sha256 "f4b39dd3fa722d2743db71a15001cb6b8e641ca429d7c2592bdeaa50936d3761"
+      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.7.0/swrag-darwin-x64.tar.gz"
+      sha256 "adeaafc19e96c153921448aca6c7b9b2c4859b7a1a66eb4717e1af12f8f8bd66"
     end
   end
 
@@ -25,17 +25,25 @@ class SuperwhisperRag < Formula
 
   def caveats
     <<~EOS
-      Run once to finish setup (starts ollama, pulls the embed model, verifies):
+      Run once to finish setup (starts ollama, pulls the embed model,
+      warms macOS permissions, installs the meeting watcher, indexes,
+      installs the agent skill, verifies):
         swrag bootstrap
 
       The archive is then auto-created on first use at
         ~/Library/Application Support/superwhisper-rag/swrag.sqlite
 
-      Optional, entirely opt-in:
-        swrag enable-sync                # hourly background sync
+      Each bootstrap step is independently invokable too:
+        swrag index                      # ingest from Super Whisper
+        swrag meeting enable-watcher     # background meeting capture
+                                         # (add --system-audio to also
+                                         #  record other apps' output;
+                                         #  see README for legal note)
+        swrag meeting permissions-check --prompt
         swrag install-skill              # ~/.cursor/skills + ~/.claude/skills
                                          # (manual-invocation only; the agent
                                          #  cannot reach for it autonomously)
+        swrag doctor
     EOS
   end
 
