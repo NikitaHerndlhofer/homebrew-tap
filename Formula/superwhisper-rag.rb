@@ -1,17 +1,17 @@
 class SuperwhisperRag < Formula
   desc "Local SQL archive for your Super Whisper dictation history"
   homepage "https://github.com/NikitaHerndlhofer/superwhisper-rag"
-  version "0.9.8"
+  version "0.9.9"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.9.8/swrag-darwin-arm64.tar.gz"
-      sha256 "a07bd38ec09d7875338a6d22526acb7756f46132747f247a9e14d20474e90654"
+      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.9.9/swrag-darwin-arm64.tar.gz"
+      sha256 "918d37c128d08f6451f7cb3f332f91723f770d5bd07fedb48cc0e277f873732f"
     end
     on_intel do
-      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.9.8/swrag-darwin-x64.tar.gz"
-      sha256 "c47f48f609d3bf2f448952fbbbad2a842be1c57bca7698f410e1dd346dee40a7"
+      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.9.9/swrag-darwin-x64.tar.gz"
+      sha256 "590ddf3cd9cb291b0af17e8ebeac0baee04057767e6c457758ad4ceaf49b2003"
     end
   end
 
