@@ -1,17 +1,17 @@
 class SuperwhisperRag < Formula
   desc "Local SQL archive for your Super Whisper dictation history"
   homepage "https://github.com/NikitaHerndlhofer/superwhisper-rag"
-  version "0.9.12"
+  version "1.0.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.9.12/swrag-darwin-arm64.tar.gz"
-      sha256 "de2b25b235937c5f6f5e34c0d5ecf5fa1ccb6c29d6b42660cdd9877796360120"
+      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v1.0.0/swrag-darwin-arm64.tar.gz"
+      sha256 "d0e8bce0433b63e0b6fb0a7735cecfafb2875f2953f2ebbad8164fd0a2e4cb58"
     end
     on_intel do
-      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v0.9.12/swrag-darwin-x64.tar.gz"
-      sha256 "8ef12a94ddb7f1ecbbdf28c3ae2754be6c6b450b3048a20e8cf34fb8d0d2a6bb"
+      url "https://github.com/NikitaHerndlhofer/superwhisper-rag/releases/download/v1.0.0/swrag-darwin-x64.tar.gz"
+      sha256 "322651c2d84f017afe505295058e0fa07c258f79f00d56f156cf19d7f104234b"
     end
   end
 
@@ -26,23 +26,26 @@ class SuperwhisperRag < Formula
   def caveats
     <<~EOS
       Run once to finish setup (starts ollama, pulls the embed model,
-      warms macOS permissions, installs the meeting watcher, indexes,
-      installs the agent skill, verifies):
+      migrates from any v0.9.x install, installs the event-driven
+      watch agent, indexes your archive, installs the agent skill,
+      and verifies):
         swrag bootstrap
 
       The archive is then auto-created on first use at
         ~/Library/Application Support/superwhisper-rag/swrag.sqlite
 
+      v1.0 replaces the pre-v0.7 hourly sync cron with a single
+      FSEvents-based watch daemon (com.superwhisper-rag.watch) that
+      ingests new Super Whisper recordings within ~2 seconds. If you
+      were on v0.9.x, `swrag bootstrap` removes the legacy
+      meeting-pipeline launchd plists automatically.
+
       Each bootstrap step is independently invokable too:
-        swrag index                      # ingest from Super Whisper
-        swrag meeting enable-watcher     # background meeting capture
-                                         # (add --system-audio to also
-                                         #  record other apps' output;
-                                         #  see README for legal note)
-        swrag meeting permissions-check --prompt
-        swrag install-skill              # ~/.cursor/skills + ~/.claude/skills
-                                         # (manual-invocation only; the agent
-                                         #  cannot reach for it autonomously)
+        swrag index             # ingest from Super Whisper
+        swrag enable-watch      # install the launchd watch agent
+        swrag install-skill     # ~/.cursor/skills + ~/.claude/skills
+                                #  (manual-invocation only; the agent
+                                #  cannot reach for it autonomously)
         swrag doctor
     EOS
   end
