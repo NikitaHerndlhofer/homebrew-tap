@@ -4,6 +4,9 @@ class Acrag < Formula
   version "0.1.0"
   license "MIT"
 
+  depends_on "ollama"
+  depends_on "sqlite"
+
   on_macos do
     on_arm do
       url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.1.0/acrag-darwin-arm64.tar.gz"
@@ -14,9 +17,6 @@ class Acrag < Formula
       sha256 "944a88b4b8f33a5ad7710effb01ad861c41b66fe3c3cde415a2831b1a02d654c"
     end
   end
-
-  depends_on "sqlite"
-  depends_on "ollama"
 
   def install
     arch = Hardware::CPU.arm? ? "arm64" : "x64"
