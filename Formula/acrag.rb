@@ -1,7 +1,7 @@
 class Acrag < Formula
   desc "Local SQL archive for your agentic coding chat history (Cursor first)"
   homepage "https://github.com/NikitaHerndlhofer/acrag"
-  version "0.3.0"
+  version "0.4.0"
   license "MIT"
 
   depends_on "ollama"
@@ -9,12 +9,12 @@ class Acrag < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.3.0/acrag-darwin-arm64.tar.gz"
-      sha256 "53e301801dafc92f3d5429b073eb21721f89362c0942a569b546bfa7c041115a"
+      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.4.0/acrag-darwin-arm64.tar.gz"
+      sha256 "c94e9a63dc41b411dee160813173cd3d88ed75fc8bd84ee8cb885098044ea712"
     end
     on_intel do
-      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.3.0/acrag-darwin-x64.tar.gz"
-      sha256 "ebcc8e0288625543b38a4469ae8e36446a436311268b3d069c414c754654728f"
+      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.4.0/acrag-darwin-x64.tar.gz"
+      sha256 "37d484836fd51a67bd986cd69a8d19c34b0366436756e4ab42bf12c496814dbf"
     end
   end
 
@@ -48,7 +48,9 @@ class Acrag < Formula
       Each step is idempotent and skipped when already done; re-run any time.
 
       Each step is independently invokable too:
-        acrag index             # index Cursor chats from state.vscdb (+ *.jsonl)
+        acrag index             # index Cursor chats from state.vscdb, on-disk
+                                #   agent-transcripts/**/*.jsonl (sqlite-wins
+                                #   backfill), and generic *.jsonl
         acrag ingest-cursor <id>  # re-ingest one Cursor conversation
         acrag install-hooks     # (re)write/merge ~/.cursor/hooks.json
         acrag install-skill     # (re)write the SKILL.md
