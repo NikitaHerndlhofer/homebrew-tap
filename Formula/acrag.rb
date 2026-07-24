@@ -1,7 +1,7 @@
 class Acrag < Formula
   desc "Local SQL archive for your agentic coding chat history (Cursor first)"
   homepage "https://github.com/NikitaHerndlhofer/acrag"
-  version "0.2.0"
+  version "0.2.1"
   license "MIT"
 
   depends_on "ollama"
@@ -9,12 +9,12 @@ class Acrag < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.2.0/acrag-darwin-arm64.tar.gz"
-      sha256 "220dfc6d854f92a8726a8222b6ed0e03b1fe7d82165b3cb44fb3d624c25fb721"
+      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.2.1/acrag-darwin-arm64.tar.gz"
+      sha256 "f7d5dcfdeb5512af71e4669fb575fa114abc71d6a1da58a3583e749cf3786e67"
     end
     on_intel do
-      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.2.0/acrag-darwin-x64.tar.gz"
-      sha256 "365ccadaaae7f2f245d371340250245b97689fe5bf1c82ee0587aa47e1cf4c17"
+      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.2.1/acrag-darwin-x64.tar.gz"
+      sha256 "1567c4268dcb2d82f7b7df7cedfe23abbcda25d12bceedce3785e00a1c726c2d"
     end
   end
 
