@@ -1,7 +1,7 @@
 class Acrag < Formula
   desc "Local SQL archive for your agentic coding chat history (Cursor first)"
   homepage "https://github.com/NikitaHerndlhofer/acrag"
-  version "0.1.0"
+  version "0.2.0"
   license "MIT"
 
   depends_on "ollama"
@@ -9,12 +9,12 @@ class Acrag < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.1.0/acrag-darwin-arm64.tar.gz"
-      sha256 "6f9c11c30e454477e492a61c635df277f364c50d5b1387a978770af3de2eb7ca"
+      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.2.0/acrag-darwin-arm64.tar.gz"
+      sha256 "220dfc6d854f92a8726a8222b6ed0e03b1fe7d82165b3cb44fb3d624c25fb721"
     end
     on_intel do
-      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.1.0/acrag-darwin-x64.tar.gz"
-      sha256 "944a88b4b8f33a5ad7710effb01ad861c41b66fe3c3cde415a2831b1a02d654c"
+      url "https://github.com/NikitaHerndlhofer/acrag/releases/download/v0.2.0/acrag-darwin-x64.tar.gz"
+      sha256 "365ccadaaae7f2f245d371340250245b97689fe5bf1c82ee0587aa47e1cf4c17"
     end
   end
 
@@ -25,24 +25,27 @@ class Acrag < Formula
 
   def caveats
     <<~EOS
-      Finish setup:
-        ollama pull bge-m3      # ~2 GB, one-time — the embed model
-        acrag bootstrap         # check Ollama, create the archive DB, print status
-        acrag install-hooks     # wire Cursor hooks -> detached background ingest
-        acrag install-skill     # install the retrieval recipes for Cursor's agent
+      Finish setup (interactive wizard — pulls the model, migrates, prompts to
+      install Cursor hooks + skill, and runs an initial sweep):
+        acrag bootstrap
 
-      The archive is auto-created on first use at
+      The archive is auto-created at
         ~/.acrag/acrag.sqlite
 
-      Cursor hooks fire `acrag` on Stop / SubagentStop / SubagentStart /
-      WorkspaceOpen and spawn a detached background ingest/sweep so the agent
-      never blocks on embedding. `acrag install-hooks` writes
-      ~/.cursor/hooks/hooks.json; `acrag install-skill` writes the recipe
-      SKILL.md to ~/.cursor/skills/acrag/ (manual-invocation only — type
-      @acrag in Cursor; the agent cannot reach for it autonomously).
+      `acrag bootstrap` pulls bge-m3 (~2 GB, one-time) automatically when
+      missing, and prompts (Y/n) to install:
+        - Cursor hooks  -> ~/.cursor/hooks/hooks.json
+          (fires `acrag` on Stop / SubagentStop / SubagentStart /
+          WorkspaceOpen; detached background ingest so the agent never blocks)
+        - the agent skill -> ~/.cursor/skills/acrag/SKILL.md
+          (manual-invocation only — type @acrag in Cursor; the agent cannot
+          reach for it autonomously)
+      Each step is idempotent and skipped when already done; re-run any time.
 
       Each step is independently invokable too:
         acrag index             # sweep ~/.acrag/transcripts for *.jsonl
+        acrag install-hooks     # (re)write ~/.cursor/hooks/hooks.json
+        acrag install-skill     # (re)write the SKILL.md
         acrag sql               # pipe SQL (vec preloaded, archive read-only)
         acrag embed             # pipe text -> vec blob literal for vec_search
     EOS
