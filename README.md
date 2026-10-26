@@ -14,3 +14,5 @@ Homebrew tap for my tools.
 brew install nikitaherndlhofer/tap/memindex
 memindex install
 ```
+
+`superwhisper-rag` and `acrag` were merged into `memindex`; both old names install it, and `brew upgrade` moves existing installs over.
