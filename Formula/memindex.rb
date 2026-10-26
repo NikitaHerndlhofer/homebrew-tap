@@ -1,7 +1,7 @@
 class Memindex < Formula
   desc "Universal local search archive with plugins: Super Whisper, Cursor, Claude Code"
   homepage "https://github.com/NikitaHerndlhofer/memindex"
-  version "0.1.19"
+  version "0.1.20"
   license "MIT"
 
   depends_on "ollama"
@@ -9,12 +9,12 @@ class Memindex < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/NikitaHerndlhofer/memindex/releases/download/v0.1.19/memindex-darwin-arm64.tar.gz"
-      sha256 "1ea61d043a9b675a267e11fc32bec458bc4018b4652e0ddc633f2890cd5480e2"
+      url "https://github.com/NikitaHerndlhofer/memindex/releases/download/v0.1.20/memindex-darwin-arm64.tar.gz"
+      sha256 "fc63b35b25122da4f4be383879d73302cd182b943a3f7efacf3bd872b024ae55"
     end
     on_intel do
-      url "https://github.com/NikitaHerndlhofer/memindex/releases/download/v0.1.19/memindex-darwin-x64.tar.gz"
-      sha256 "66f35059ab37e3532f21c1dfe0500d145483a2f75dd2f4784fec8b9d505a397a"
+      url "https://github.com/NikitaHerndlhofer/memindex/releases/download/v0.1.20/memindex-darwin-x64.tar.gz"
+      sha256 "042e3b3e946a38d22511784710697499c41367b2010a5416d4824b7c1bddcaca"
     end
   end
 
