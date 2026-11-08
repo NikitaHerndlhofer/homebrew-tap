@@ -1,5 +1,5 @@
 class Memindex < Formula
-  desc "Universal local search archive with plugins: Super Whisper, Cursor, Claude Code"
+  desc "Long-term memory for coding agents: a local search archive of chats and meetings"
   homepage "https://github.com/NikitaHerndlhofer/memindex"
   version "0.2.3"
   license "MIT"
